@@ -1,0 +1,25 @@
+{
+  "name": "discord-torn-bot",
+  "version": "1.0.0",
+  "description": "discord-torn-bot",
+  "main": "index.js",
+  "scripts": {
+    "test": "console.log(\"Hello World\");"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/zzacal/discord-torn-bot.git"
+  },
+  "keywords": [
+    "discord",
+    "torn",
+    "natalie",
+    "imbruglia"
+  ],
+  "author": "Zac Zacal",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zzacal/discord-torn-bot/issues"
+  },
+  "homepage": "https://github.com/zzacal/discord-torn-bot#readme"
+}
