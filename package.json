@@ -21,5 +21,9 @@
   "bugs": {
     "url": "https://github.com/zzacal/discord-torn-bot/issues"
   },
-  "homepage": "https://github.com/zzacal/discord-torn-bot#readme"
+  "homepage": "https://github.com/zzacal/discord-torn-bot#readme",
+  "dependencies": {
+    "discord.js": "^12.3.1",
+    "eslint": "^7.8.1"
+  }
 }
