@@ -12,14 +12,17 @@ client.once('ready', () => {
 
 client.login(config.token);
 
-client.on('message', async message => {
+client.on('message', message => {
     if(message.author.id != client.user.id){
-        if(!lastTornt || lastTornt < (new Date() - tornLimit) && pattern.exec(message)) {
-            message.channel.send(`Last torn: ${lastTornt || 'never'}`);
-            let any_six = Math.floor(Math.random() * 5);
-            let result = await giphy.search({q:"torn", api_key:"dc6zaTOxFJmzC"}, (_,data)=>console.log(data.data[any_six].embed_url));
-            message.channel.send(result);
-            lastTornt = new Date();
+        if(!lastTornt || lastTornt < (new Date() - tornLimit)) {
+            if (pattern.exec(message)){
+                message.channel.send(`Last torn: ${lastTornt || 'never'}`);
+                let any_six = Math.floor(Math.random() * 5);
+                giphy.search({q:"natalie imbruglia", api_key:"dc6zaTOxFJmzC"}, (_,results)=> {
+                    message.channel.send(results.data[any_six].embed_url)
+                });
+                lastTornt = new Date();
+            }
         }
     }
 });
