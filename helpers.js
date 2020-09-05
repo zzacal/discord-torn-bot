@@ -5,14 +5,35 @@ let idif = (message, condition) => {
     return false;
 }
 
-let handleCommand = (message, commands = []) => {
-    return true;
+let handleCommand = (ownId, message, commands) => {
+    let unhandled = true;
+    let pref = /^torn.{0,1}bot/i;
+    if(pref.exec(message.content)) {
+        unhandled = false;
+        let response = '';
+        switch(true){
+            case message.content.replace(pref, '').trim().length === 0:
+                response = "Yes?";
+                break;
+            case commands.askName.test(message.content):
+                response = "I'm tornbot, you see?";
+                break;
+            case commands.askInvite.test(message.content):
+                response = `https://discord.com/oauth2/authorize?client_id=${ownId}&scope=bot`;
+                break;
+            default:
+                response = "404.";
+                break;
+        }
+        message.channel.send(`@${message.author.username}, ${response}`);
+    }
+    return unhandled;
 }
 
 let handleMessage = (message, patterns, getGiph) => {
     let matched = false;
     patterns.forEach((pattern) => {
-        if (pattern[0].exec(message.content)) {
+        if (pattern[0].test(message.content)) {
             console.log(`${new Date()} Matched ${pattern[0]} | ${message.author.username}: ${message.content}`);
             matched = true;
             getGiph(pattern[1], (giph) => message.channel.send(giph));
