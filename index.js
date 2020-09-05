@@ -28,5 +28,5 @@ client.on('message', message => {
     stages.push(() => helpers.idif(message, !lastTornt || lastTornt < (new Date() - tornLimit))); // ignore message if tornt to recently
     stages.push(() => helpers.handleMessage(message, patterns, helpers.getGiph(giphy))); // handle message
     var success = pipeline.process(stages);
-    lastTornt = !success ? success : new Date();
+    lastTornt = !success ? lastTornt : new Date();
 });
