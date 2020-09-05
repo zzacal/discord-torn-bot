@@ -5,6 +5,10 @@ let idif = (message, condition) => {
     return false;
 }
 
+let handleCommand = (message, commands) => {
+    return message;
+}
+
 let handleMessage = (message, patterns, getGiph) => {
     let matched = false;
     patterns.forEach((pattern) => {
@@ -28,6 +32,7 @@ let getGiph = (giphy) => {
     }
 };
 
+exports.handleCommand = handleCommand;
 exports.handleMessage = handleMessage;
 exports.getGiph = getGiph;
 exports.idif = idif;

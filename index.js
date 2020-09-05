@@ -23,9 +23,10 @@ client.login(discord_token);
 
 client.on('message', message => {
     let stages = []; // add stages to this pipeline
-    stages.push(() => helpers.idif(message, message.author.id != client.user.id));
-    stages.push(() => helpers.idif(message, !lastTornt || lastTornt < (new Date() - tornLimit)));
-    stages.push(() => helpers.handleMessage(message, patterns, helpers.getGiph(giphy)));
+    stages.push(() => helpers.idif(message, message.author.id != client.user.id)); // ignore message if comes from this bot
+    stages.push(() => helpers.handleCommand(message)); // handle commands
+    stages.push(() => helpers.idif(message, !lastTornt || lastTornt < (new Date() - tornLimit))); // ignore message if tornt to recently
+    stages.push(() => helpers.handleMessage(message, patterns, helpers.getGiph(giphy))); // handle message
     var success = pipeline.process(stages);
     lastTornt = !success ? success : new Date();
 });
