@@ -1,9 +1,7 @@
 //configuration
-const config = require('./config.json');
-const discord_token = process.env.DISCORD_TOKEN || config.token;
-const giphyKey = process.env.GIPHY_KEY || config.giphyKey ;
-const tornLimit = process.env.TORN_LIMIT || config.tornLimit || 5000;
-const testOnly = process.env.IS_TEST || config.testOnly;
+const discord_token = process.env.DISCORD_TOKEN;
+const giphyKey = process.env.GIPHY_KEY;
+const tornLimit = process.env.TORN_LIMIT || 5000;
 
 const commands = require('./commands').commands;
 const patterns = require('./patterns').patterns;
@@ -16,7 +14,6 @@ var lastTornt = null;
 
 client.once('ready', () => {
     console.log('ready!');
-    console.log(`test mode: ${testOnly}`)
     console.log(`commands:`);
     console.log(commands);
     console.log(`pattern:`);
