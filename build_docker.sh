@@ -1,7 +1,7 @@
 #!/bin/bash
 docker stop discord-torn-bot || true &&
 docker container rm discord-torn-bot || true &&
-docker build -t discord-torn-bot:1 . &&
+docker build -t discord-torn-bot . &&
 docker run -d --name=discord-torn-bot \
     -e DISCORD_TOKEN=$DISCORD_TOKEN \
     -e GIPHY_KEY=$GIPHY_KEY \
