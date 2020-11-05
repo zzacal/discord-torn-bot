@@ -4,8 +4,7 @@ const patterns = [
     [new RegExp(/rickroll/i), "rickroll"],
     [new RegExp(/give you up/i), "rickroll"],
     [new RegExp(/never gonna/i), "rickroll"],
-    [new RegExp(/love/i), "haddaway"],
-    [new RegExp(/cod/i), "ready"]
+    [new RegExp(/love/i), "haddaway"]
 ];
 
 exports.patterns = patterns;
