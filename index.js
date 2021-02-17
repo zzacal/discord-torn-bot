@@ -31,3 +31,16 @@ client.on('message', message => {
     var success = pipeline.process(stages);
     lastTornt = !success ? lastTornt : new Date();
 });
+
+// web server
+const express = require('express');
+const app = express();
+const port = 7089;
+
+app.get('/', (req, res) => {
+    res.send('Nothing\'s right I\'m torn!')
+  });
+  
+app.listen(port, () => {
+    console.log(`Web app started`)
+});
